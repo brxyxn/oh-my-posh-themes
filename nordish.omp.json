@@ -12,7 +12,7 @@
             "macos": "mac"
           },
           "style": "diamond",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os"
         },
         {
@@ -106,7 +106,7 @@
           "foreground": "#282D38",
           "style": "diamond",
           "leading_diamond": "",
-          "template": "\uf85a {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB ",
+          "template": "{{ if .WSL }}{{ else }}\uf85a {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB {{ end }}",
           "trailing_diamond": "",
           "type": "sysinfo"
         },
