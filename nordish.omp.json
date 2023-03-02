@@ -12,7 +12,7 @@
             "macos": "mac"
           },
           "style": "diamond",
-          "template": " {{ if .WSL }}wsl@{{ end }}{{.Icon}} ",
+          "template": " {{.Icon}} ",
           "type": "os"
         },
         {
