@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "#282D38",
+          "foreground": "#26C6DA",
+          "leading_diamond": "\ue0c5",
+          "properties": {
+            "macos": "mac"
+          },
+          "style": "diamond",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+          "type": "os"
+        },
+        {
+          "background": "#282D38",
+          "foreground": "#26C6DA",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": " {{ .UserName }} ",
+          "type": "session"
+        },
+        {
+          "background": "#3B4252",
+          "foreground": "#14c2dd",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "folder"
+          },
+          "style": "powerline",
+          "template": " \ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#a2c4e0",
+          "background": "#444C5E",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#EBCB8B{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#A3BE8C{{ end }}",
+            "{{ if gt .Ahead 0 }}#495B6E{{ end }}",
+            "{{ if gt .Behind 0 }}#374D4C{{ end }}"
+          ],
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#444C5E{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#204C66{{ end }}",
+            "{{ if gt .Ahead 0 }}#F5D6A4{{ end }}",
+            "{{ if gt .Behind 0 }}#F0CBB6{{ end }}"
+          ],
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} ",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "background": "#6CA35E",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "type": "go",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#007d9c",
+          "template": "\u202D\uFCD1 {{ .Full }} "
+        },
+        {
+          "type": "ruby",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#cc342d",
+          "template": " \uE791 {{ .Full }}"
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "background": "#444C5E",
+          "foreground": "#00d6c1",
+          "foreground_templates": ["{{ if gt .Code 0 }}#cc342d{{ end }}"],
+          "trailing_diamond": "",
+          "template": " \u25C9 ",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#26C6DA",
+          "foreground": "#282D38",
+          "style": "diamond",
+          "leading_diamond": "",
+          "template": "\uf85a {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB ",
+          "trailing_diamond": "",
+          "type": "sysinfo"
+        },
+        {
+          "type": "spotify",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#1BD760",
+          "properties": {
+            "playing_icon": "\uE602 ",
+            "paused_icon": "\uF8E3 ",
+            "stopped_icon": "\uF04D "
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#007ACC",
+          "style": "plain",
+          "template": "\u279c ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
