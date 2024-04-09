@@ -5,22 +5,22 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#282D38",
+          "background": "#2E3440",
           "foreground": "#26C6DA",
-          "leading_diamond": "\ue0c5",
+          "leading_diamond": "\ue0c2",
           "properties": {
             "macos": "mac"
           },
           "style": "diamond",
-          "template": " {{.Icon}} ",
+          "template": " {{.Icon}}",
           "type": "os"
         },
         {
-          "background": "#282D38",
+          "background": "#2E3440",
           "foreground": "#26C6DA",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " {{ .UserName }} ",
+          "template": "\ueb99 {{ .UserName }} ",
           "type": "session"
         },
         {
@@ -28,10 +28,11 @@
           "foreground": "#14c2dd",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "style": "folder"
+            "style": "agnoster",
+            "folder_separator_icon": "/"
           },
           "style": "powerline",
-          "template": " \ue5ff {{ .Path }} ",
+          "template": " \uf07b {{ .Path }} ",
           "type": "path"
         },
         {
@@ -84,12 +85,14 @@
           "template": " \uE791 {{ .Full }}"
         },
         {
-          "type": "exit",
+          "type": "text",
           "style": "diamond",
           "background": "#444C5E",
           "foreground": "#00d6c1",
-          "foreground_templates": ["{{ if gt .Code 0 }}#cc342d{{ end }}"],
-          "trailing_diamond": "",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#cc342d{{ end }}"
+          ],
+          "trailing_diamond": "\ue0c0",
           "template": " \u25C9 ",
           "properties": {
             "always_enabled": true
@@ -105,22 +108,10 @@
           "background": "#26C6DA",
           "foreground": "#282D38",
           "style": "diamond",
-          "leading_diamond": "",
-          "template": "{{ if .WSL }}{{ else }}\uf85a {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB {{ end }}",
-          "trailing_diamond": "",
+          "leading_diamond": "\ue0c2",
+          "template": "{{ if .WSL }}{{ else }} {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ round (divf .PhysicalTotalMemory 1073741824.0) 0 }}GB \ue266 {{ end }}",
+          "trailing_diamond": "\ue0c0",
           "type": "sysinfo"
-        },
-        {
-          "type": "spotify",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background": "#1BD760",
-          "properties": {
-            "playing_icon": "\uE602 ",
-            "paused_icon": "\uF8E3 ",
-            "stopped_icon": "\uF04D "
-          }
         }
       ],
       "type": "prompt"
@@ -130,9 +121,15 @@
       "newline": true,
       "segments": [
         {
+          "foreground": "#cd5e42",
+          "style": "plain",
+          "template": "\ue3bf ",
+          "type": "root"
+        },
+        {
           "foreground": "#007ACC",
           "style": "plain",
-          "template": "\u279c ",
+          "template": "\u276f",
           "type": "text"
         }
       ],
